@@ -1,0 +1,39 @@
+{
+    "constructtrapmsg": 
+    " **Trapper Skill Name** \n Construct a trap?",
+    "connectors":["Your trap is made out of","hidden in the","and it is"],
+    "firstOption":[
+        {"id":"woodbtn",
+        "title":"wood, ",
+        "description":"When your opponent Normal Summons a monster: "},
+        {"id":"steelbtn",
+        "title":"steel, ",
+        "description":"If your opponent activates a monster effect: "},
+        {"id":"bamboobtn",
+        "title":"bamboo, ",
+        "description":"If your opponent draws a card (except during the Draw Phase): "}
+    ],
+    "secondOption":[
+        {"id":"holebtn",
+        "title":"hole you just dug, ",
+        "description":"Set 1 monster you control; "},
+        {"id":"treebtn",
+        "title":"trees, ",
+        "description":"banish 3 cards from your GY; "},
+        {"id":"susbtn",
+        "title":"suspicious contraption, ",
+        "description":"discard 1 card; "}
+    ],
+    "thirdOption":[
+        {"id":"spikybtn",
+        "title":"very spiky",
+        "description":"banish it until the End Phase."},
+        {"id":"brickybtn",
+        "title":"sorta sticky",
+        "description":"monsters your opponent control lose 100 ATK/DEF x their level until the End Phase"},
+        {"id":"softbtn",
+        "title":"soft, very, very soft",
+        "description":"monsters your opponent currently controls cannot declare an attack."}
+    ]
+
+}

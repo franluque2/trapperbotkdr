@@ -25,7 +25,7 @@ commandManager.scanTextCommands();
 client.once('ready', async () => {
   await commandManager.registerSlashCommands();
   Logger.success(`[Discord] Connected! You're in as ${client.user.username}`);
-  client.user.setActivity('Something creative');
+  client.user.setActivity('Traptrix in Master Duel');
 });
 
 process.on('uncaughtException', (error) => {
