@@ -196,7 +196,7 @@ module.exports = async (client, interaction) => {
                     .setStyle(2)
                   ]);
 
-                  await interaction.reply({ content: "<@"+user_in_db.playerid+"> 's "+" Trap Is Ready to FIRE!:", ephemeral: false });
+                  await interaction.reply({ content: "<@"+user_in_db.playerid+"> 's "+"Trap Is Ready to FIRE!:", ephemeral: false });
                   await interaction.followUp({ content: "**" + user_in_db.traptitle + connectors[2]+" "+ thirdOption[i].title + "** \n" + user_in_db.trapeff + thirdOption[i].description, ephemeral: true , components: [row]});
 
 
