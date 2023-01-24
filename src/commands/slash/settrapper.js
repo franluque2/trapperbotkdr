@@ -12,6 +12,21 @@ module.exports = {
 
   name: 'settrapper',
   description: 'Sets the trapper for the current kdr!',
+  options:[
+    {
+      name: 'target',
+      description: 'The player to set as trapper',
+      type: 6,
+      required: true
+  },
+  {
+      name: 'kdr',
+      description: 'The kdr to set the player as trapper in',
+      type: 3,
+      required: true
+  }
+
+  ],
   register_command: new SlashCommandBuilder()
   .setName('settrapper')
   .setDescription('Sets the trapper for the current kdr!')
