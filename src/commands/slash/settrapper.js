@@ -22,7 +22,7 @@ module.exports = {
   {
       name: 'kdr',
       description: 'The kdr to set the player as trapper in',
-      type: 1,
+      type: 4,
       required: true
   }
 
