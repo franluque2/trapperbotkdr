@@ -196,7 +196,7 @@ module.exports = async (client, interaction) => {
                     .setStyle(2)
                   ]);
 
-                  await interaction.reply({ content: "<@"+user_in_db.playerid+"> 's"+" Trap Is Ready to FIRE!:", ephemeral: false });
+                  await interaction.reply({ content: "<@"+user_in_db.playerid+"> 's "+" Trap Is Ready to FIRE!:", ephemeral: false });
                   await interaction.followUp({ content: "**" + user_in_db.traptitle + connectors[2]+" "+ thirdOption[i].title + "** \n" + user_in_db.trapeff + thirdOption[i].description, ephemeral: true , components: [row]});
 
 
@@ -209,7 +209,7 @@ module.exports = async (client, interaction) => {
               if (user_in_db.convstatus === 5) {
                 if (interaction.customId === "firetrap") {
 
-                  await interaction.reply({ content: "<@"+user_in_db.playerid+"> 's"+"Trap Activated!: \n "+"\n" +"**"+ user_in_db.traptitle +"**"+ "\n" + "\n" +user_in_db.trapeff, ephemeral: false });
+                  await interaction.reply({ content: "<@"+user_in_db.playerid+"> 's "+"Trap Activated!: \n "+"\n" +"**"+ user_in_db.traptitle +"**"+ "\n" + "\n" +user_in_db.trapeff, ephemeral: false });
 
                   const filter = { playerid: userid };
                   const updateplayerstatus = {
