@@ -81,7 +81,7 @@ module.exports = async (client, interaction) => {
             },
           };
           const result = await trappers.updateOne(filter, updateplayerstatus);
-          await interaction.update({ components: [] });
+          await interaction.reply({ content: "You have stopped building a trap", ephemeral: true });
         }
       }
       else
