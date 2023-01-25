@@ -12,6 +12,18 @@
         {"id":"bamboobtn",
         "title":"bamboo, ",
         "description":"If your opponent draws a card (except during the Draw Phase): "}
+        ,
+        {"id":"bamboobtn",
+        "title":"bamboo, ",
+        "description":"If your opponent draws a card (except during the Draw Phase): "}
+        ,
+        {"id":"bamboobtn",
+        "title":"bamboo, ",
+        "description":"If your opponent draws a card (except during the Draw Phase): "}
+        ,
+        {"id":"bamboobtn",
+        "title":"bamboo, ",
+        "description":"If your opponent draws a card (except during the Draw Phase): "}
     ],
     "secondOption":[
         {"id":"holebtn",

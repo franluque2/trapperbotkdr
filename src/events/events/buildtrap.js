@@ -54,7 +54,9 @@ module.exports = async (client, interaction) => {
 
           const row = new MessageActionRow();
 
-          for (i in firstOption)
+          if(firstOption.length()<=3)
+          {
+            for (i in firstOption)
             (
               row.addComponents(new MessageButton()
                 .setCustomId(firstOption[i].id)
@@ -68,8 +70,34 @@ module.exports = async (client, interaction) => {
             (
               message = message + "\n" + firstOption[i].title + ": " + firstOption[i].description
             )
+          }
+          else
+          {
 
-              ;
+            var arr = [];
+            while(arr.length < 3){
+                var r = Math.floor(firstOption.length());
+                if(arr.indexOf(r) === -1) arr.push(r);
+            }
+
+            for (i in arr)
+            (
+              row.addComponents(new MessageButton()
+                .setCustomId(firstOption[i].id)
+                .setLabel(firstOption[i].title)
+                .setStyle(1))
+            )
+
+          var message = connectors[0]
+
+          for (i in arr)
+            (
+              message = message + "\n" + firstOption[i].title + ": " + firstOption[i].description
+            )
+
+          }
+
+          
           await interaction.reply({ content: message, ephemeral: true, components: [row] });
 
         }
@@ -103,7 +131,10 @@ module.exports = async (client, interaction) => {
 
               const row = new MessageActionRow();
 
-              for (i in secondOption)
+              if(secondOption.length()<=3)
+              {
+
+                for (i in secondOption)
                 (
                   row.addComponents(new MessageButton()
                     .setCustomId(secondOption[i].id)
@@ -120,6 +151,38 @@ module.exports = async (client, interaction) => {
 
                   ;
               await interaction.reply({ content: message, ephemeral: true, components: [row] });
+
+              }
+              else
+              {
+                var arr = [];
+                while(arr.length < 3){
+                    var r = Math.floor(secondOption.length());
+                    if(arr.indexOf(r) === -1) arr.push(r);
+                }
+  
+
+                for (i in arr)
+                (
+                  row.addComponents(new MessageButton()
+                    .setCustomId(secondOption[i].id)
+                    .setLabel(secondOption[i].title)
+                    .setStyle(1))
+                )
+
+              var message = connectors[1]
+
+              for (i in arr)
+                (
+                  message = message + "\n" + secondOption[i].title + ": " + secondOption[i].description
+                )
+
+                  ;
+              await interaction.reply({ content: message, ephemeral: true, components: [row] });
+    
+              }
+
+             
 
             }
           }
@@ -145,23 +208,59 @@ module.exports = async (client, interaction) => {
 
                 const row = new MessageActionRow();
 
+                if(thirdOption.length<=3)
+                {
+
+                  
                 for (i in thirdOption)
-                  (
-                    row.addComponents(new MessageButton()
-                      .setCustomId(thirdOption[i].id)
-                      .setLabel(thirdOption[i].title)
-                      .setStyle(1))
-                  )
+                (
+                  row.addComponents(new MessageButton()
+                    .setCustomId(thirdOption[i].id)
+                    .setLabel(thirdOption[i].title)
+                    .setStyle(1))
+                )
 
-                var message = connectors[2]
+              var message = connectors[2]
 
-                for (i in thirdOption)
-                  (
-                    message = message + "\n" + thirdOption[i].title + ": " + thirdOption[i].description
-                  )
+              for (i in thirdOption)
+                (
+                  message = message + "\n" + thirdOption[i].title + ": " + thirdOption[i].description
+                )
 
-                    ;
-                await interaction.reply({ content: message, ephemeral: true, components: [row] });
+                  ;
+              await interaction.reply({ content: message, ephemeral: true, components: [row] });
+
+                }
+                else
+                {
+
+                  var arr = [];
+                while(arr.length < 3){
+                    var r = Math.floor(thirdOption.length());
+                    if(arr.indexOf(r) === -1) arr.push(r);
+                }
+
+                  
+                for (i in arr)
+                (
+                  row.addComponents(new MessageButton()
+                    .setCustomId(thirdOption[i].id)
+                    .setLabel(thirdOption[i].title)
+                    .setStyle(1))
+                )
+
+              var message = connectors[2]
+
+              for (i in arr)
+                (
+                  message = message + "\n" + thirdOption[i].title + ": " + thirdOption[i].description
+                )
+
+                  ;
+              await interaction.reply({ content: message, ephemeral: true, components: [row] });
+
+                }
+
 
 
               }
