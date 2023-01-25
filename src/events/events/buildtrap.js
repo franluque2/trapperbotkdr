@@ -15,7 +15,6 @@ const { connectors, firstOption, secondOption, thirdOption } = require('../../co
 module.exports = async (client, interaction) => {
   if (!interaction.isButton()) return;
 
-  
 
   const userid = interaction.user.id;
 
@@ -42,6 +41,7 @@ module.exports = async (client, interaction) => {
     }
     else
       if (user_in_db.convstatus === 1) {
+
         if (interaction.customId === 'buildtrap') {
 
           const filter = { playerid: userid };
@@ -54,7 +54,8 @@ module.exports = async (client, interaction) => {
 
           const row = new MessageActionRow();
 
-          if(firstOption.length()<=3)
+
+          if(firstOption.length<=3)
           {
             for (i in firstOption)
             (
@@ -73,31 +74,35 @@ module.exports = async (client, interaction) => {
           }
           else
           {
-
+            
             var arr = [];
             while(arr.length < 3){
-                var r = Math.floor(firstOption.length());
+                var r = Math.floor(Math.random() * firstOption.length);
                 if(arr.indexOf(r) === -1) arr.push(r);
             }
+            
 
             for (i in arr)
             (
               row.addComponents(new MessageButton()
-                .setCustomId(firstOption[i].id)
-                .setLabel(firstOption[i].title)
+                .setCustomId(firstOption[arr[i]].id)
+                .setLabel(firstOption[arr[i]].title)
                 .setStyle(1))
             )
+
+            
 
           var message = connectors[0]
 
           for (i in arr)
             (
-              message = message + "\n" + firstOption[i].title + ": " + firstOption[i].description
+              message = message + "\n" + firstOption[arr[i]].title + ": " + firstOption[arr[i]].description
             )
 
           }
 
           
+
           await interaction.reply({ content: message, ephemeral: true, components: [row] });
 
         }
@@ -131,7 +136,7 @@ module.exports = async (client, interaction) => {
 
               const row = new MessageActionRow();
 
-              if(secondOption.length()<=3)
+              if(secondOption.length<=3)
               {
 
                 for (i in secondOption)
@@ -157,7 +162,7 @@ module.exports = async (client, interaction) => {
               {
                 var arr = [];
                 while(arr.length < 3){
-                    var r = Math.floor(secondOption.length());
+                    var r = Math.floor(Math.random() * secondOption.length);
                     if(arr.indexOf(r) === -1) arr.push(r);
                 }
   
@@ -165,8 +170,8 @@ module.exports = async (client, interaction) => {
                 for (i in arr)
                 (
                   row.addComponents(new MessageButton()
-                    .setCustomId(secondOption[i].id)
-                    .setLabel(secondOption[i].title)
+                    .setCustomId(secondOption[arr[i]].id)
+                    .setLabel(secondOption[arr[i]].title)
                     .setStyle(1))
                 )
 
@@ -174,7 +179,7 @@ module.exports = async (client, interaction) => {
 
               for (i in arr)
                 (
-                  message = message + "\n" + secondOption[i].title + ": " + secondOption[i].description
+                  message = message + "\n" + secondOption[arr[i]].title + ": " + secondOption[arr[i]].description
                 )
 
                   ;
@@ -236,7 +241,7 @@ module.exports = async (client, interaction) => {
 
                   var arr = [];
                 while(arr.length < 3){
-                    var r = Math.floor(thirdOption.length());
+                    var r = Math.floor(Math.random() * thirdOption.length);
                     if(arr.indexOf(r) === -1) arr.push(r);
                 }
 
@@ -244,8 +249,8 @@ module.exports = async (client, interaction) => {
                 for (i in arr)
                 (
                   row.addComponents(new MessageButton()
-                    .setCustomId(thirdOption[i].id)
-                    .setLabel(thirdOption[i].title)
+                    .setCustomId(thirdOption[arr[i]].id)
+                    .setLabel(thirdOption[arr[i]].title)
                     .setStyle(1))
                 )
 
@@ -253,7 +258,7 @@ module.exports = async (client, interaction) => {
 
               for (i in arr)
                 (
-                  message = message + "\n" + thirdOption[i].title + ": " + thirdOption[i].description
+                  message = message + "\n" + thirdOption[arr[i]].title + ": " + thirdOption[arr[i]].description
                 )
 
                   ;
