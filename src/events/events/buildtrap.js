@@ -278,21 +278,24 @@ module.exports = async (client, interaction) => {
               for (i in thirdOption) {
                 if (interaction.customId === thirdOption[i].id) {
 
+                  var updateplayerstatus;
                   if(interaction.customId===needs_code_ids.roll_two)
                   {
-                    const updateplayerstatus = {
+                    addeffs=user_in_db.additionaleffs
+                    addeffs.length!=0 ? addeffs.push(needs_code_ids.roll_two) : addeffs=[needs_code_ids.roll_two]                      
+                    updateplayerstatus = {
                       $set: {
                         convstatus: 5,
                         timethirdoption: Date.now(),
                         traptitle: user_in_db.traptitle + connectors[2]+" "+ thirdOption[i].title,
                         trapeff: user_in_db.trapeff + thirdOption[i].description,
-                        additionaleffs: user_in_db.additionaleffs.push(needs_code_ids.roll_two)
+                        additionaleffs: addeffs
                       },
                     };
                   }
                   else
                   {
-                    const updateplayerstatus = {
+                    updateplayerstatus = {
                       $set: {
                         convstatus: 5,
                         timethirdoption: Date.now(),
@@ -314,7 +317,7 @@ module.exports = async (client, interaction) => {
                     .setStyle(2)
                   ]);
 
-                  await interaction.reply({ content: "<@"+user_in_db.playerid+"> 's "+"Trap Is Ready to FIRE!", ephemeral: false });
+                  await interaction.reply({ content: "<@"+user_in_db.playerid+"> 's "+"trap is ready to FIRE!", ephemeral: false });
                   await interaction.followUp({ content: "**" + user_in_db.traptitle + connectors[2]+" "+ thirdOption[i].title + "** \n" + user_in_db.trapeff + thirdOption[i].description, ephemeral: true , components: [row]});
 
 
@@ -329,10 +332,10 @@ module.exports = async (client, interaction) => {
                   var traptitle=user_in_db.traptitle
                   var trapeff=user_in_db.trapeff
 
-                  if(user_in_db.additionaleffs)
-                    for(i in user_in_db.additionaleffs)
-                    {
-                      if(additionaleffs[i]===needs_code_ids.roll_two)
+                  if(user_in_db.additionaleffs.length!=0)
+                  for (let i = 0; i < user_in_db.additionaleffs.length; i++) {
+                    
+                      if(user_in_db.additionaleffs[i]===needs_code_ids.roll_two)
                       {
                         var arr = [];
                         while(arr.length < 2){
@@ -341,13 +344,13 @@ module.exports = async (client, interaction) => {
                         }
                         for (let j = 0; j < arr.length; j++) {
 
-                          trapeff = trapeff + "\n" + thirdOption[arr[j]].title+": "+thirdOption[arr[j]].description;
+                          trapeff = trapeff + "\n" + "  -**"+thirdOption[arr[j]].title+"**: "+thirdOption[arr[j]].description;
                         }
                         
                       }
                     }
 
-                  await interaction.reply({ content: "<@"+user_in_db.playerid+"> 's "+"Trap Activated!: \n "+"\n" +"**"+ traptitle +"**"+ "\n" + "\n" +trapeff, ephemeral: false });
+                  await interaction.reply({ content: "<@"+user_in_db.playerid+"> 's "+"trap activated!: \n "+"\n" +"**"+ traptitle +"**"+ "\n" + "\n" +trapeff, ephemeral: false });
 
                   const filter = { playerid: userid };
                   const updateplayerstatus = {
@@ -386,4 +389,9 @@ module.exports = async (client, interaction) => {
 
               }
   }
+  else
+  {
+    await interaction.reply({ content: `Only Trappers may use this!`});
+  }
+
 }

@@ -77,6 +77,10 @@ module.exports = {
                   }
             }
           }
+          else
+          {
+            await interaction.reply({ content: `Only Trappers may use this command!`});
+          }
 		
 	},
 
