@@ -7,7 +7,7 @@ const { MongoClient } = require("mongodb");
 const dbclient = new MongoClient(mongodb);
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
-const { connectors, firstOption, secondOption, thirdOption } = require('../../constants.json');
+const { connectors, firstOption, secondOption, thirdOption, needs_code_ids } = require('../../constants.json');
 
 
 
@@ -278,16 +278,30 @@ module.exports = async (client, interaction) => {
               for (i in thirdOption) {
                 if (interaction.customId === thirdOption[i].id) {
 
-
+                  if(interaction.customId===needs_code_ids.roll_two)
+                  {
+                    const updateplayerstatus = {
+                      $set: {
+                        convstatus: 5,
+                        timethirdoption: Date.now(),
+                        traptitle: user_in_db.traptitle + connectors[2]+" "+ thirdOption[i].title,
+                        trapeff: user_in_db.trapeff + thirdOption[i].description,
+                        additionaleffs: user_in_db.additionaleffs.push(needs_code_ids.roll_two)
+                      },
+                    };
+                  }
+                  else
+                  {
+                    const updateplayerstatus = {
+                      $set: {
+                        convstatus: 5,
+                        timethirdoption: Date.now(),
+                        traptitle: user_in_db.traptitle + connectors[2]+" "+ thirdOption[i].title,
+                        trapeff: user_in_db.trapeff + thirdOption[i].description
+                      },
+                    };
+                  }
                   const filter = { playerid: userid };
-                  const updateplayerstatus = {
-                    $set: {
-                      convstatus: 5,
-                      timethirdoption: Date.now(),
-                      traptitle: user_in_db.traptitle + connectors[2]+" "+ thirdOption[i].title,
-                      trapeff: user_in_db.trapeff + thirdOption[i].description
-                    },
-                  };
                   const result = await trappers.updateOne(filter, updateplayerstatus);
 
                   const row = new MessageActionRow().addComponents([new MessageButton()
@@ -312,8 +326,28 @@ module.exports = async (client, interaction) => {
             else
               if (user_in_db.convstatus === 5) {
                 if (interaction.customId === "firetrap") {
+                  var traptitle=user_in_db.traptitle
+                  var trapeff=user_in_db.trapeff
 
-                  await interaction.reply({ content: "<@"+user_in_db.playerid+"> 's "+"Trap Activated!: \n "+"\n" +"**"+ user_in_db.traptitle +"**"+ "\n" + "\n" +user_in_db.trapeff, ephemeral: false });
+                  if(user_in_db.additionaleffs)
+                    for(i in user_in_db.additionaleffs)
+                    {
+                      if(additionaleffs[i]===needs_code_ids.roll_two)
+                      {
+                        var arr = [];
+                        while(arr.length < 2){
+                            var r = Math.floor(Math.random() * thirdOption.length);
+                            if(arr.indexOf(r) === -1 && thirdOption[r].id!== needs_code_ids.roll_two) arr.push(r);
+                        }
+                        for (let j = 0; j < arr.length; j++) {
+
+                          trapeff = trapeff + "\n" + thirdOption[arr[j]].title+": "+thirdOption[arr[j]].description;
+                        }
+                        
+                      }
+                    }
+
+                  await interaction.reply({ content: "<@"+user_in_db.playerid+"> 's "+"Trap Activated!: \n "+"\n" +"**"+ traptitle +"**"+ "\n" + "\n" +trapeff, ephemeral: false });
 
                   const filter = { playerid: userid };
                   const updateplayerstatus = {
@@ -323,7 +357,8 @@ module.exports = async (client, interaction) => {
                       timesecondoption: null,
                       timethirdoption: null,
                       traptitle: "",
-                      trapeff: ""
+                      trapeff: "",
+                      additionaleffs:[]
                     },
                   };
                   const result = await trappers.updateOne(filter, updateplayerstatus);
@@ -341,7 +376,8 @@ module.exports = async (client, interaction) => {
                       timesecondoption: null,
                       timethirdoption: null,
                       traptitle: "",
-                      trapeff: ""
+                      trapeff: "",
+                      additionaleffs:[]
                     },
                   };
                   const result = await trappers.updateOne(filter, updateplayerstatus);

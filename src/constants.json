@@ -45,7 +45,14 @@
         "description":"monsters your opponent control lose 100 ATK/DEF x their level until the End Phase"},
         {"id":"softbtn",
         "title":"soft, very, very soft",
-        "description":"monsters your opponent currently controls cannot declare an attack."}
-    ]
+        "description":"monsters your opponent currently controls cannot declare an attack."},
+        {"id":"unknownablebtn",
+        "title":"unknowable- everything all at the same time and also nothing. It’s very chaotic.",
+        "description":"apply two random trapper effects (ignoring this one)."}
+        
+    ],
+    "needs_code_ids":{
+        "roll_two":"unknownablebtn"
+    }
 
 }

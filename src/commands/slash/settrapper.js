@@ -64,6 +64,7 @@ module.exports = {
                           timefirstoption:null,
                           timesecondoption:null,
                           timethirdoption:null,
+                          additionaleffs:[]
                         },
                       };
 
