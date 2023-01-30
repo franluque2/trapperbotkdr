@@ -43,7 +43,7 @@ module.exports = {
 ,
 	async execute(client, interaction) {
 
-        const member = interaction.options.getMember('target');
+        const member = interaction.member;
         var target;
         var kdr;
             if (member.roles.cache.some(role => role.name === 'KDR-Admin')) { //
