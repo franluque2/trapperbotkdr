@@ -76,6 +76,10 @@ module.exports = {
                     console.log(error)
                   }
             }
+            else
+            {
+              await interaction.reply({ content: `You are currently already building a trap, if you aren't, use /resettrap to reset this process`});
+            }
           }
           else
           {
