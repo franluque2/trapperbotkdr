@@ -350,7 +350,9 @@ module.exports = async (client, interaction) => {
                       }
                     }
 
-                  await interaction.update({ content: "<@"+user_in_db.playerid+"> 's "+"trap activated!: \n "+"\n" +"**"+ traptitle +"**"+ "\n" + "\n" +trapeff, ephemeral: false, components: [] });
+                  await interaction.update({ components: [] });
+                  await interaction.followUp({ content: "<@"+user_in_db.playerid+"> 's "+"trap activated!: \n "+"\n" +"**"+ traptitle +"**"+ "\n" + "\n" +trapeff, ephemeral: false, components: [] });
+
 
                   const filter = { playerid: userid };
                   const updateplayerstatus = {
@@ -369,7 +371,8 @@ module.exports = async (client, interaction) => {
                 }
                 else if (interaction.customId === "destroytrap")
                 {
-                  await interaction.update({ content: "<@"+user_in_db.playerid+"> Has Destroyed Their Trap!", ephemeral: false , components: []});
+                  await interaction.update({ components: [] });
+                  await interaction.followUp({ content: "<@"+user_in_db.playerid+"> Has Destroyed Their Trap!", ephemeral: false});
 
                   const filter = { playerid: userid };
                   const updateplayerstatus = {
