@@ -40,8 +40,7 @@ module.exports = {
 
 
             if (user_in_db!=null) {
-              if(user_in_db.convstatus===0)
-              {
+              
                 try {
                    
                     const filter = { playerid: userid};
@@ -65,7 +64,7 @@ module.exports = {
                   {
                     console.log(error)
                   }
-            }
+            
           }
           else
           {
