@@ -317,9 +317,8 @@ module.exports = async (client, interaction) => {
                     .setStyle(2)
                   ]);
 
-                  await interaction.update({ content: "<@"+user_in_db.playerid+"> 's "+"trap is ready to FIRE!", ephemeral: false, components: [] });
-                  await interaction.followUp({ content: "**" + user_in_db.traptitle + connectors[2]+" "+ thirdOption[i].title + "** \n" + user_in_db.trapeff + thirdOption[i].description, ephemeral: true , components: [row]});
-
+                  await interaction.update({ content: "**" + user_in_db.traptitle + connectors[2]+" "+ thirdOption[i].title + "** \n" + user_in_db.trapeff + thirdOption[i].description, ephemeral: true , components: [row]});
+                  await interaction.followUp({ content: "<@"+user_in_db.playerid+"> 's "+"trap is ready to FIRE!", ephemeral: false, components: [] });
 
                 }
 
