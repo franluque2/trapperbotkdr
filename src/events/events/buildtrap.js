@@ -317,7 +317,7 @@ module.exports = async (client, interaction) => {
                     .setStyle(2)
                   ]);
 
-                  await interaction.update({ content: "<@"+user_in_db.playerid+"> 's "+"trap is ready to FIRE!", ephemeral: false });
+                  await interaction.update({ content: "<@"+user_in_db.playerid+"> 's "+"trap is ready to FIRE!", ephemeral: false, components: [] });
                   await interaction.followUp({ content: "**" + user_in_db.traptitle + connectors[2]+" "+ thirdOption[i].title + "** \n" + user_in_db.trapeff + thirdOption[i].description, ephemeral: true , components: [row]});
 
 
@@ -350,7 +350,7 @@ module.exports = async (client, interaction) => {
                       }
                     }
 
-                  await interaction.update({ content: "<@"+user_in_db.playerid+"> 's "+"trap activated!: \n "+"\n" +"**"+ traptitle +"**"+ "\n" + "\n" +trapeff, ephemeral: false });
+                  await interaction.update({ content: "<@"+user_in_db.playerid+"> 's "+"trap activated!: \n "+"\n" +"**"+ traptitle +"**"+ "\n" + "\n" +trapeff, ephemeral: false, components: [] });
 
                   const filter = { playerid: userid };
                   const updateplayerstatus = {
@@ -369,7 +369,7 @@ module.exports = async (client, interaction) => {
                 }
                 else if (interaction.customId === "destroytrap")
                 {
-                  await interaction.update({ content: "<@"+user_in_db.playerid+"> Has Destroyed Their Trap!", ephemeral: false });
+                  await interaction.update({ content: "<@"+user_in_db.playerid+"> Has Destroyed Their Trap!", ephemeral: false , components: []});
 
                   const filter = { playerid: userid };
                   const updateplayerstatus = {
