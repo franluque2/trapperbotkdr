@@ -64,7 +64,7 @@
         {"id":"boomertears",
         "title":"yugiboomer's tears, ",
         "description":"If your opponent Special Summons a monster from the Extra Deck: "}
-		,
+		
     ],
     "secondOption":[
         {"id":"holebtn",
@@ -75,10 +75,10 @@
         "description":"banish 3 cards from your GY; "},
         {"id":"mystbnt",
         "title":"mystical veil shimmering in plain sight, ",
-        "description":"pay 1000 LP; "}
+        "description":"pay 1000 LP; "},
 		{"id":"poolbtditjkg",
         "title":"pool of blood, ",
-        "description":"pay 3000 LP; "}
+        "description":"pay 3000 LP; "},
 		{"id":"bushbushbushbushbush",
         "title":"each player draws 1 card, then discards 1 card; ",
         "description":"discard 1 card; "},
@@ -129,7 +129,7 @@
         "description":"flip 1 monster you control face-up; "},
 		{"id":"endcon",
         "title":"endless consistency of modern yugioh, ",
-        "description":"immediately after this effect resolves, your opponent can Special Summon their Legendary Monster from their deck; "},
+        "description":"immediately after this effect resolves, your opponent can Special Summon their Legendary Monster from their deck; "}
     ],
     "thirdOption":[
         {"id":"spikybtn",
@@ -143,7 +143,7 @@
         "description":"monsters your opponent currently controls cannot declare an attack."},
         {"id":"unknownablebtn",
         "title":"unknowable- everything all at the same time and also nothing. It’s very chaotic.",
-        "description":"apply two random trapper effects (ignoring this one)."}
+        "description":"apply two random trapper effects (ignoring this one)."},
 		{"id":"mastercon",
         "title":"masterfully constructed.",
         "description":"**complete your Legendary Quest.**"},
@@ -212,7 +212,7 @@
         "description":"draw 1 card, then shuffle 1 card from your hand or field into the Deck."},
 		{"id":"retirecrows",
         "title":"a really old, retired crow.",
-        "description":"banish 1 card from your opponent’s GY."},
+        "description":"banish 1 card from your opponent’s GY."}
     ],
     "needs_code_ids":{
         "roll_two":"unknownablebtn"
