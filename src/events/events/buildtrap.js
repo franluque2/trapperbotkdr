@@ -1,11 +1,10 @@
-const { MessageActionRow,
-  MessageButton, ButtonBuilder, ButtonStyle, Events } = require('discord.js');
+const { ActionRowBuilder,
+  ButtonBuilder, ButtonStyle, Events, SlashCommandBuilder } = require('discord.js');
 const { token, mongodb } = require('../../config.json');
 
 const { MongoClient } = require("mongodb");
 
 const dbclient = new MongoClient(mongodb);
-const { SlashCommandBuilder } = require('@discordjs/builders');
 
 const { connectors, firstOption, secondOption, thirdOption, needs_code_ids } = require('../../constants.json');
 
@@ -52,14 +51,14 @@ module.exports = async (client, interaction) => {
           };
           const result = await trappers.updateOne(filter, updateplayerstatus);
 
-          const row = new MessageActionRow();
+          const row = new ActionRowBuilder();
 
 
           if(firstOption.length<=3)
           {
             for (i in firstOption)
             (
-              row.addComponents(new MessageButton()
+              row.addComponents(new ButtonBuilder()
                 .setCustomId(firstOption[i].id)
                 .setLabel(firstOption[i].title)
                 .setStyle(1))
@@ -84,7 +83,7 @@ module.exports = async (client, interaction) => {
 
             for (i in arr)
             (
-              row.addComponents(new MessageButton()
+              row.addComponents(new ButtonBuilder()
                 .setCustomId(firstOption[arr[i]].id)
                 .setLabel(firstOption[arr[i]].title)
                 .setStyle(1))
@@ -134,14 +133,14 @@ module.exports = async (client, interaction) => {
               };
               const result = await trappers.updateOne(filter, updateplayerstatus);
 
-              const row = new MessageActionRow();
+              const row = new ActionRowBuilder();
 
               if(secondOption.length<=3)
               {
 
                 for (i in secondOption)
                 (
-                  row.addComponents(new MessageButton()
+                  row.addComponents(new ButtonBuilder()
                     .setCustomId(secondOption[i].id)
                     .setLabel(secondOption[i].title)
                     .setStyle(1))
@@ -169,7 +168,7 @@ module.exports = async (client, interaction) => {
 
                 for (i in arr)
                 (
-                  row.addComponents(new MessageButton()
+                  row.addComponents(new ButtonBuilder()
                     .setCustomId(secondOption[arr[i]].id)
                     .setLabel(secondOption[arr[i]].title)
                     .setStyle(1))
@@ -211,7 +210,7 @@ module.exports = async (client, interaction) => {
                 };
                 const result = await trappers.updateOne(filter, updateplayerstatus);
 
-                const row = new MessageActionRow();
+                const row = new ActionRowBuilder();
 
                 if(thirdOption.length<=3)
                 {
@@ -219,7 +218,7 @@ module.exports = async (client, interaction) => {
                   
                 for (i in thirdOption)
                 (
-                  row.addComponents(new MessageButton()
+                  row.addComponents(new ButtonBuilder()
                     .setCustomId(thirdOption[i].id)
                     .setLabel(thirdOption[i].title)
                     .setStyle(1))
@@ -248,7 +247,7 @@ module.exports = async (client, interaction) => {
                   
                 for (i in arr)
                 (
-                  row.addComponents(new MessageButton()
+                  row.addComponents(new ButtonBuilder()
                     .setCustomId(thirdOption[arr[i]].id)
                     .setLabel(thirdOption[arr[i]].title)
                     .setStyle(1))
@@ -307,11 +306,11 @@ module.exports = async (client, interaction) => {
                   const filter = { playerid: userid };
                   const result = await trappers.updateOne(filter, updateplayerstatus);
 
-                  const row = new MessageActionRow().addComponents([new MessageButton()
+                  const row = new ActionRowBuilder().addComponents([new ButtonBuilder()
                     .setCustomId("firetrap")
                     .setLabel("Reveal your Trap!")
                     .setStyle(4),
-                    new MessageButton()
+                    new ButtonBuilder()
                     .setCustomId("destroytrap")
                     .setLabel("Destroy your Trap!")
                     .setStyle(2)

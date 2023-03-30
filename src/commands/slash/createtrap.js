@@ -1,13 +1,12 @@
 const {  
-  MessageActionRow,
-  MessageButton,
+  ActionRowBuilder,
+  ButtonBuilder,
   ButtonStyle,
   Message,
   ComponentType,
-  ButtonComponent } = require('discord.js');
+  ButtonComponent, SlashCommandBuilder } = require('discord.js');
 const { token,mongodb } = require('../../config.json');
 const { MessageEmbed } = require('discord.js');
-const { ActionRowBuilder, SlashCommandBuilder, ButtonBuilder } = require('@discordjs/builders');
 
 
 const { MongoClient } =require("mongodb");
@@ -58,13 +57,13 @@ module.exports = {
 
                     const firstmsgcontent=constructtrapmsg;
 
-                    const row =  new MessageActionRow().addComponents([
-                      new MessageButton()
+                    const row =  new ActionRowBuilder().addComponents([
+                      new ButtonBuilder()
                         .setCustomId('buildtrap')
                         .setLabel('✅ Yes')
                         .setStyle(3)
                         ,
-                        new MessageButton()
+                        new ButtonBuilder()
                         .setCustomId('cancel')
                         .setLabel('❌No')
                         .setStyle(4)]

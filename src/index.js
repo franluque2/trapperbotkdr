@@ -5,7 +5,7 @@ const CommandManager = require('./commands/commandManager');
 const EventManager = require('./events/eventManager');
 const config = require('../config.json');
 
-const allIntents = new Discord.Intents(32767);
+const allIntents = new Discord.IntentsBitField(32767);
 const Logger = require('./utils/logger');
 
 const client = new Discord.Client({ intents: allIntents });
